@@ -1,0 +1,48 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 16
+    buildToolsVersion "22.0.1"
+
+    defaultConfig {
+        applicationId "ru.yandex.autotests.mobile.localserver"
+        minSdkVersion 16
+        targetSdkVersion 17
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
+        }
+
+        debug {
+            debuggable true
+        }
+    }
+
+    productFlavors {
+        x86 {
+            ndk {
+                abiFilter "x86"
+            }
+        }
+        armv7a {
+            ndk {
+                abiFilter "armeabi-v7a"
+            }
+        }
+        fat
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    compile files('/Users/dolf/Downloads/BuildOwnPawServer/libs/brazil.jar')
+    compile files('/Users/dolf/Downloads/BuildOwnPawServer/libs/bsh-2.1.8.jar')
+    compile files('/Users/dolf/Downloads/BuildOwnPawServer/libs/commons-codec.jar')
+    compile files('/Users/dolf/Downloads/BuildOwnPawServer/libs/jdom-android.jar')
+    compile files('/Users/dolf/Downloads/BuildOwnPawServer/libs/paw-server.jar')
+}
